@@ -28,12 +28,23 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
+			<string>lumadeeplink</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>lumadeeplink</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
 			<string>com.adobe.lumaplatform</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>lumaPlatform</string>
 			</array>
 		</dict>
+		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
@@ -70,9 +81,9 @@
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Using Location to show how Platform can ingest real-time lcoation data</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>We&apos;ll show you cool things near you in the app. With the &quot;always&quot; option, we can also alert you via notifications if you don&apos;t have the app open.</string>
+	<string>We'll show you cool things near you in the app. With the "always" option, we can also alert you via notifications if you don't have the app open.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We&apos;ll show you cool things near you in the app. With the &quot;always&quot; option, we can also alert you via notifications if you don&apos;t have the app open.</string>
+	<string>We'll show you cool things near you in the app. With the "always" option, we can also alert you via notifications if you don't have the app open.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs to access your Photo library to upload pictures</string>
 	<key>UIBackgroundModes</key>

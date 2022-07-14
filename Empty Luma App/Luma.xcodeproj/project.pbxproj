@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02FD98492999BA17B8FE68B2 /* Pods_Luma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34A5A17E6A2C8FA81C44C2AD /* Pods_Luma.framework */; };
 		0460C21022C0BE7D002B263B /* UIImage+WebP.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460C1EF22C0BE7D002B263B /* UIImage+WebP.m */; };
 		0460C21122C0BE7D002B263B /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460C1F022C0BE7D002B263B /* MKAnnotationView+WebCache.m */; };
 		0460C21222C0BE7D002B263B /* SDWebImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0460C1F322C0BE7D002B263B /* SDWebImageManager.m */; };
@@ -88,11 +89,9 @@
 		724B97041C522DF200F7704D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 724B97031C522DF200F7704D /* AppDelegate.swift */; };
 		724B97091C522DF200F7704D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 724B97071C522DF200F7704D /* Main.storyboard */; };
 		724B970B1C522DF200F7704D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 724B970A1C522DF200F7704D /* Assets.xcassets */; };
-		72AB56A11CEB1B6F001DCC10 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72AB56A01CEB1B6F001DCC10 /* StoreKit.framework */; };
 		72AF49511C522F9700C79F5E /* Configurations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AF49501C522F9700C79F5E /* Configurations.swift */; };
 		8A0C50F72677CFA900DE2D28 /* CoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0C50F62677CFA900DE2D28 /* CoreServices.framework */; };
-		8A45E1BF26CC5D41006D628A /* Pods_Luma.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A45E1BE26CC5D41006D628A /* Pods_Luma.framework */; };
-		8A45E1C026CC5D41006D628A /* Pods_Luma.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A45E1BE26CC5D41006D628A /* Pods_Luma.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A45E1C026CC5D41006D628A /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A59D7FE27A4B351006E9743 /* ProductBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A59D7FD27A4B350006E9743 /* ProductBridge.swift */; };
 		8A59D80627A9C5E4006E9743 /* 81b91e817aac9a8cd090723111085cdd_mj12-orange_main.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8A59D80427A9C5E4006E9743 /* 81b91e817aac9a8cd090723111085cdd_mj12-orange_main.jpeg */; };
 		8A59D80B27A9CA61006E9743 /* e0869bf00255542bdb38cbaa927ed95a_luma-yoga-strap-set.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 8A59D80727A9CA61006E9743 /* e0869bf00255542bdb38cbaa927ed95a_luma-yoga-strap-set.jpeg */; };
@@ -103,13 +102,23 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		67E1EF2E2880979F0039BDC2 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A45E1C126CC5D42006D628A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				8A45E1C026CC5D41006D628A /* Pods_Luma.framework in Embed Frameworks */,
+				8A45E1C026CC5D41006D628A /* (null) in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,7 +159,6 @@
 		0460C20D22C0BE7D002B263B /* UIImage+MultiFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+MultiFormat.h"; sourceTree = "<group>"; };
 		0460C20E22C0BE7D002B263B /* UIButton+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+WebCache.m"; sourceTree = "<group>"; };
 		0460C20F22C0BE7D002B263B /* UIImage+GIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+GIF.h"; sourceTree = "<group>"; };
-		233229F0C26F0DC81029401E /* Pods-Luma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luma.release.xcconfig"; path = "Target Support Files/Pods-Luma/Pods-Luma.release.xcconfig"; sourceTree = "<group>"; };
 		2623AD47215D4BC800FCAE80 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		2623AD49215DEEF600FCAE80 /* Gallery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gallery.swift; sourceTree = "<group>"; };
 		2623AD4B215DF8A400FCAE80 /* CartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
@@ -184,6 +192,7 @@
 		26EA9513216256440036708C /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ZStore/Parse/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		26EA951A216338530036708C /* OrderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCell.swift; sourceTree = "<group>"; };
 		26EA951C216361E10036708C /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		34A5A17E6A2C8FA81C44C2AD /* Pods_Luma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Luma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B57B32A2194A57E002FB3EF /* Offers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offers.swift; sourceTree = "<group>"; };
 		3B5B905A223F305900407DF3 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		3B7619F221A8BDD500A00060 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
@@ -191,6 +200,9 @@
 		3B98A2C722A84FCA000EF8CC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		3B9F9587237FAA620056E4C9 /* StoreSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreSelection.swift; sourceTree = "<group>"; };
 		3BF615B421AF08F100974321 /* Default-568.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568.png"; sourceTree = "<group>"; };
+		67E1EF252880979F0039BDC2 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		67E1EF272880979F0039BDC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B987E68D7F03DACFCF76FA5 /* Pods-Luma.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luma.release.xcconfig"; path = "Target Support Files/Pods-Luma/Pods-Luma.release.xcconfig"; sourceTree = "<group>"; };
 		721951AD1D081A3F0051F93C /* Wishlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wishlist.swift; sourceTree = "<group>"; };
 		721951AF1D08278B0051F93C /* Cart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cart.swift; sourceTree = "<group>"; };
 		721951C41D0853BF0051F93C /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -219,10 +231,8 @@
 		724B97081C522DF200F7704D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		724B970A1C522DF200F7704D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		724B970F1C522DF200F7704D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		72AB56A01CEB1B6F001DCC10 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		72AF49501C522F9700C79F5E /* Configurations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configurations.swift; sourceTree = "<group>"; };
 		8A0C50F62677CFA900DE2D28 /* CoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreServices.framework; path = System/Library/Frameworks/CoreServices.framework; sourceTree = SDKROOT; };
-		8A45E1BE26CC5D41006D628A /* Pods_Luma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_Luma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A59D7FD27A4B350006E9743 /* ProductBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductBridge.swift; sourceTree = "<group>"; };
 		8A59D7FF27A9BAD9006E9743 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		8A59D80427A9C5E4006E9743 /* 81b91e817aac9a8cd090723111085cdd_mj12-orange_main.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "81b91e817aac9a8cd090723111085cdd_mj12-orange_main.jpeg"; sourceTree = "<group>"; };
@@ -230,8 +240,7 @@
 		8A59D80827A9CA61006E9743 /* e20a0bd9b98530ec232bb74fa1e815eb_wb01-black-0.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "e20a0bd9b98530ec232bb74fa1e815eb_wb01-black-0.jpeg"; sourceTree = "<group>"; };
 		8A59D80927A9CA61006E9743 /* 6e1175e31b6490567d855cb45cc875bd_wh04-blue_main.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "6e1175e31b6490567d855cb45cc875bd_wh04-blue_main.jpeg"; sourceTree = "<group>"; };
 		8A59D80A27A9CA61006E9743 /* 08074a66ab70918d90b69fd9cec36d13_lt06.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 08074a66ab70918d90b69fd9cec36d13_lt06.jpeg; sourceTree = "<group>"; };
-		A8D178C92E4B2D0A4BF4E011 /* Pods_Luma.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Luma.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CEFBF521C58930FBED117BED /* Pods-Luma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luma.debug.xcconfig"; path = "Target Support Files/Pods-Luma/Pods-Luma.debug.xcconfig"; sourceTree = "<group>"; };
+		94CF53C884A0D744500EEE5D /* Pods-Luma.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Luma.debug.xcconfig"; path = "Target Support Files/Pods-Luma/Pods-Luma.debug.xcconfig"; sourceTree = "<group>"; };
 		E0020CE621B4521E00817145 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		E0255DED21A9976C002AE42A /* Luma.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Luma.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -254,17 +263,16 @@
 				721951C51D0853BF0051F93C /* Accelerate.framework in Frameworks */,
 				26EA9519216256450036708C /* FBSDKLoginKit.framework in Frameworks */,
 				7230749B1C52377800C5DF7E /* SystemConfiguration.framework in Frameworks */,
-				72AB56A11CEB1B6F001DCC10 /* StoreKit.framework in Frameworks */,
 				7230749F1C52378000C5DF7E /* libsqlite3.tbd in Frameworks */,
 				7230749D1C52377C00C5DF7E /* libz.tbd in Frameworks */,
 				26EA9517216256450036708C /* FBSDKCoreKit.framework in Frameworks */,
 				723074971C52376F00C5DF7E /* Security.framework in Frameworks */,
 				723074951C52376A00C5DF7E /* QuartzCore.framework in Frameworks */,
-				8A45E1BF26CC5D41006D628A /* Pods_Luma.framework in Frameworks */,
 				723074911C52376100C5DF7E /* CoreGraphics.framework in Frameworks */,
 				7230748F1C52375A00C5DF7E /* CoreLocation.framework in Frameworks */,
 				26EA9514216256450036708C /* Bolts.framework in Frameworks */,
 				7230748D1C52375600C5DF7E /* CFNetwork.framework in Frameworks */,
+				02FD98492999BA17B8FE68B2 /* Pods_Luma.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,18 +375,26 @@
 		47ED5C27065A5E99CE9825AB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8A45E1BE26CC5D41006D628A /* Pods_Luma.framework */,
 				8A0C50F62677CFA900DE2D28 /* CoreServices.framework */,
-				A8D178C92E4B2D0A4BF4E011 /* Pods_Luma.framework */,
+				34A5A17E6A2C8FA81C44C2AD /* Pods_Luma.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		67E1EF242880979F0039BDC2 /* LumaTutorialApp */ = {
+			isa = PBXGroup;
+			children = (
+				67E1EF252880979F0039BDC2 /* NotificationService.swift */,
+				67E1EF272880979F0039BDC2 /* Info.plist */,
+			);
+			path = LumaTutorialApp;
 			sourceTree = "<group>";
 		};
 		6C86F13FB5E78B49F74B37CA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CEFBF521C58930FBED117BED /* Pods-Luma.debug.xcconfig */,
-				233229F0C26F0DC81029401E /* Pods-Luma.release.xcconfig */,
+				94CF53C884A0D744500EEE5D /* Pods-Luma.debug.xcconfig */,
+				6B987E68D7F03DACFCF76FA5 /* Pods-Luma.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -397,7 +413,6 @@
 				721951C81D0853D30051F93C /* CoreMedia.framework */,
 				721951C61D0853CA0051F93C /* AVFoundation.framework */,
 				721951C41D0853BF0051F93C /* Accelerate.framework */,
-				72AB56A01CEB1B6F001DCC10 /* StoreKit.framework */,
 				7230749E1C52378000C5DF7E /* libsqlite3.tbd */,
 				721951DE1D0857CC0051F93C /* libxml2.tbd */,
 				7230749C1C52377C00C5DF7E /* libz.tbd */,
@@ -421,6 +436,7 @@
 				3BF615B421AF08F100974321 /* Default-568.png */,
 				E0255DED21A9976C002AE42A /* Luma.entitlements */,
 				724B97021C522DF200F7704D /* Luma */,
+				67E1EF242880979F0039BDC2 /* LumaTutorialApp */,
 				724B97011C522DF200F7704D /* Products */,
 				6C86F13FB5E78B49F74B37CA /* Pods */,
 				47ED5C27065A5E99CE9825AB /* Frameworks */,
@@ -490,12 +506,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 724B97121C522DF200F7704D /* Build configuration list for PBXNativeTarget "Luma" */;
 			buildPhases = (
-				0A1FA51CC351C760BF92CB7C /* [CP] Check Pods Manifest.lock */,
+				E63FAF2306286C68303AF1DE /* [CP] Check Pods Manifest.lock */,
 				724B96FC1C522DF200F7704D /* Sources */,
 				724B96FD1C522DF200F7704D /* Frameworks */,
 				724B96FE1C522DF200F7704D /* Resources */,
-				83599D26FC96353FAD059337 /* [CP] Embed Pods Frameworks */,
 				8A45E1C126CC5D42006D628A /* Embed Frameworks */,
+				0B65D5A4DAEB8347E286B7FC /* [CP] Embed Pods Frameworks */,
+				67E1EF2E2880979F0039BDC2 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -512,14 +529,15 @@
 		724B96F81C522DF100F7704D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 1250;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
 				ORGANIZATIONNAME = xscoder;
 				TargetAttributes = {
 					724B96FF1C522DF200F7704D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = CUP3S7NYZW;
+						DevelopmentTeam = FKGEE875K4;
 						LastSwiftMigration = 1250;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -536,10 +554,9 @@
 			};
 			buildConfigurationList = 724B96FB1C522DF100F7704D /* Build configuration list for PBXProject "Luma" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
@@ -587,7 +604,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A1FA51CC351C760BF92CB7C /* [CP] Check Pods Manifest.lock */ = {
+		0B65D5A4DAEB8347E286B7FC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Luma/Pods-Luma-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AEPAssurance/AEPAssurance.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPCore/AEPCore.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPEdge/AEPEdge.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPEdgeConsent/AEPEdgeConsent.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPEdgeIdentity/AEPEdgeIdentity.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPIdentity/AEPIdentity.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPLifecycle/AEPLifecycle.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPMessaging/AEPMessaging.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPRulesEngine/AEPRulesEngine.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPServices/AEPServices.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPSignal/AEPSignal.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPUserProfile/AEPUserProfile.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPAssurance.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPEdge.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPEdgeConsent.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPEdgeIdentity.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPIdentity.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPLifecycle.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPMessaging.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPRulesEngine.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPServices.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPSignal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPUserProfile.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Luma/Pods-Luma-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E63FAF2306286C68303AF1DE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -607,26 +668,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		83599D26FC96353FAD059337 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Luma/Pods-Luma-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Luma/Pods-Luma-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -751,10 +792,11 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Debug;
 		};
@@ -807,19 +849,22 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALIDATE_WORKSPACE = YES;
 			};
 			name = Release;
 		};
 		724B97131C522DF200F7704D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CEFBF521C58930FBED117BED /* Pods-Luma.debug.xcconfig */;
+			baseConfigurationReference = 94CF53C884A0D744500EEE5D /* Pods-Luma.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = Luma.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CUP3S7NYZW;
+				DEVELOPMENT_TEAM = FKGEE875K4;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -836,7 +881,7 @@
 					"$(PROJECT_DIR)/Luma/CardIO",
 				);
 				MARKETING_VERSION = 1.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lc++",
 					"-ObjC",
@@ -844,22 +889,27 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adobe.luma.tutorial;
 				PRODUCT_NAME = "Luma RTCDP";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Luma/Header.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7, armv7s, arm64, arm64e, x86_64";
 			};
 			name = Debug;
 		};
 		724B97141C522DF200F7704D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 233229F0C26F0DC81029401E /* Pods-Luma.release.xcconfig */;
+			baseConfigurationReference = 6B987E68D7F03DACFCF76FA5 /* Pods-Luma.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = Luma.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CUP3S7NYZW;
+				DEVELOPMENT_TEAM = FKGEE875K4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Luma/Parse",
@@ -874,7 +924,7 @@
 					"$(PROJECT_DIR)/Luma/CardIO",
 				);
 				MARKETING_VERSION = 1.0;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
 					"-lc++",
 					"-ObjC",
@@ -882,9 +932,12 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adobe.luma.tutorial;
 				PRODUCT_NAME = "Luma RTCDP";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = Luma/Header.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7, armv7s, arm64, arm64e, x86_64";
 			};
 			name = Release;
 		};

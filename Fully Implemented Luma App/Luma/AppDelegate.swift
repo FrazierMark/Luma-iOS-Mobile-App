@@ -40,7 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Adobe Experience Platform - Config
         MobileCore.setLogLevel(.trace)
         //Replace with your tags app id - details provided in tutorial
-        let currentAppId = "b5cbd1a1220e/bae66382cce8/launch-88492c6dcb6e-development"
+        let currentAppId = "3149c49c3910/301aa57f50b5/launch-387236dc11bc-development"
 
 
         let extensions = [Edge.self, Assurance.self, UserProfile.self, Consent.self, AEPEdgeIdentity.Identity.self, Messaging.self]

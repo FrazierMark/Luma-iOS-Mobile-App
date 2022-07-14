@@ -1,20 +1,83 @@
 PODS:
-  - Alamofire (5.5.0)
+  - AEPAssurance (3.0.1):
+    - AEPCore (>= 3.1.0)
+    - AEPServices (>= 3.1.0)
+  - AEPCore (3.7.0):
+    - AEPRulesEngine (>= 1.1.0)
+    - AEPServices (>= 3.7.0)
+  - AEPEdge (1.4.1):
+    - AEPCore (>= 3.5.0)
+    - AEPEdgeIdentity
+  - AEPEdgeConsent (1.0.1):
+    - AEPCore (>= 3.5.0)
+    - AEPEdge (>= 1.4.0)
+  - AEPEdgeIdentity (1.1.0):
+    - AEPCore (>= 3.6.0)
+  - AEPIdentity (3.7.0):
+    - AEPCore (>= 3.7.0)
+  - AEPLifecycle (3.7.0):
+    - AEPCore (>= 3.7.0)
+  - AEPMessaging (1.0.0):
+    - AEPCore
+    - AEPEdge (>= 1.1.0)
+    - AEPEdgeIdentity (>= 1.0.0)
+    - AEPServices
+  - AEPRulesEngine (1.2.0)
+  - AEPServices (3.7.0)
+  - AEPSignal (3.7.0):
+    - AEPCore (>= 3.7.0)
+  - AEPUserProfile (3.0.1):
+    - AEPCore
+  - Alamofire (5.6.1)
   - SwiftyJSON (5.0.1)
 
 DEPENDENCIES:
+  - AEPAssurance (~> 3.0)
+  - AEPCore (~> 3.0)
+  - AEPEdge (~> 1.0)
+  - AEPEdgeConsent (~> 1.0)
+  - AEPEdgeIdentity (~> 1.0)
+  - AEPIdentity (~> 3.0)
+  - AEPLifecycle (~> 3.0)
+  - AEPMessaging (~> 1)
+  - AEPSignal (~> 3.0)
+  - AEPUserProfile (~> 3.0)
   - Alamofire
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
+    - AEPAssurance
+    - AEPCore
+    - AEPEdge
+    - AEPEdgeConsent
+    - AEPEdgeIdentity
+    - AEPIdentity
+    - AEPLifecycle
+    - AEPMessaging
+    - AEPRulesEngine
+    - AEPServices
+    - AEPSignal
+    - AEPUserProfile
     - Alamofire
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
+  AEPAssurance: b25880cd4b14f22c61a1dce19807bd0ca0fe9b17
+  AEPCore: 290dd609f261efe7a049bd3bdcbbc0734fe0e1fc
+  AEPEdge: 6faf60328f9e5ae7a107fd61f9a968f46ebf2928
+  AEPEdgeConsent: a23b35ab331d2aa2013fcef49c9d6b80085d5597
+  AEPEdgeIdentity: 47f0c6ecbec5857b2a8cb9b7bf717c2424c6bae0
+  AEPIdentity: 965c831d132eba4874566220598590399f7617ac
+  AEPLifecycle: 7c2ba7de3b067999eb8b6a66f85f5815e87a06dc
+  AEPMessaging: 661cc08435254f3c9cc0899785c20a7952952e95
+  AEPRulesEngine: 71228dfdac24c9ded09be13e3257a7eb22468ccc
+  AEPServices: 7bc2af2a153ea223e87ec50c8e3fd6e0282869c6
+  AEPSignal: a7fbfd170fc121a4c0c413b6af644513d9966fde
+  AEPUserProfile: 2ddb5ba8e2c22dd8f942992306b050f4be2c2403
+  Alamofire: 87bd8c952f9a4454320fce00d9cc3de57bcadaf5
   SwiftyJSON: 2f33a42c6fbc52764d96f13368585094bfd8aa5e
 
-PODFILE CHECKSUM: d883fa043cd5166162daab165567a70b0e803356
+PODFILE CHECKSUM: ecfa53f2d27467387458ccf82fde68f0a3ab68b4
 
-COCOAPODS: 1.11.2
+COCOAPODS: 1.11.3

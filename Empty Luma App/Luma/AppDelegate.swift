@@ -17,20 +17,96 @@ import UserNotifications
 import Alamofire
 import SwiftyJSON
 
+import AEPCore
+import AEPEdge
+import AEPEdgeConsent
+import AEPAssurance
+import AEPEdgeIdentity
+import AEPUserProfile
+import AEPIdentity
+import AEPLifecycle
+import AEPSignal
+import AEPServices
+import AEPMessaging
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
 
+    let notificationCenter = UNUserNotificationCenter.current()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        notificationCenter.delegate = self
+        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
+        notificationCenter.requestAuthorization(options: options) {
+                    didAllow, _ in
+                    if !didAllow {
+                        print("User has declined notifications")
+                    }
+                }
+        MobileCore.setLogLevel(.debug)
+        // let currentAppId = "94f571f308d5/ebdd79919382/launch-1c2658732b82-development"
+        let appState = application.applicationState
         loadProducts()
         
+        let extensions = [
+                          Edge.self,
+                          Consent.self,
+                          Assurance.self,
+                          AEPEdgeIdentity.Identity.self,
+                          AEPIdentity.Identity.self,
+                          UserProfile.self,
+                          Lifecycle.self,
+                          Signal.self,
+                          Messaging.self
+                        ]
+        
+        // MobileCore.setLogLevel(.trace)
+        MobileCore.registerExtensions(extensions, {
+            MobileCore.configureWith(appId: "3149c49c3910/301aa57f50b5/launch-387236dc11bc-development")
+            MobileCore.updateConfigurationWith(configDict: ["messaging.useSandbox" : true])
+            if appState != .background {
+                MobileCore.lifecycleStart(additionalContextData: ["contextDataKey": "contextDataVal"])
+            }
+        })
+        
+        let center = UNUserNotificationCenter.current()
+                center.requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
+
+                    if let error = error {
+                        print("error requesting authorization: \(error)")
+                    }
+
+                    DispatchQueue.main.async {
+                        application.registerForRemoteNotifications()
+                    }
+                }
+        return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+        Assurance.startSession(url: url)
         return true
     }
     
+    
+//    func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+//        MobileCore.setPushIdentifier(deviceToken)
+//    }
+    
+    // Tells the delegate that the app successfully registered with Apple Push Notification service (APNs).
+        func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+            let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+            let token = tokenParts.joined()
+            print("Device Token: \(token)")
 
+            // Send push token to experience platform
+            MobileCore.setPushIdentifier(deviceToken)
+        }
+    
     
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

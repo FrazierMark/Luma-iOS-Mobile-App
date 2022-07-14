@@ -518,7 +518,7 @@
 				TargetAttributes = {
 					724B96FF1C522DF200F7704D = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = CUP3S7NYZW;
+						DevelopmentTeam = FKGEE875K4;
 						LastSwiftMigration = 1250;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -621,6 +621,7 @@
 				"${BUILT_PRODUCTS_DIR}/AEPEdge/AEPEdge.framework",
 				"${BUILT_PRODUCTS_DIR}/AEPEdgeConsent/AEPEdgeConsent.framework",
 				"${BUILT_PRODUCTS_DIR}/AEPEdgeIdentity/AEPEdgeIdentity.framework",
+				"${BUILT_PRODUCTS_DIR}/AEPIdentity/AEPIdentity.framework",
 				"${BUILT_PRODUCTS_DIR}/AEPLifecycle/AEPLifecycle.framework",
 				"${BUILT_PRODUCTS_DIR}/AEPMessaging/AEPMessaging.framework",
 				"${BUILT_PRODUCTS_DIR}/AEPRulesEngine/AEPRulesEngine.framework",
@@ -637,6 +638,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPEdge.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPEdgeConsent.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPEdgeIdentity.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPIdentity.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPLifecycle.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPMessaging.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AEPRulesEngine.framework",
@@ -844,7 +846,7 @@
 				CODE_SIGN_ENTITLEMENTS = Luma.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CUP3S7NYZW;
+				DEVELOPMENT_TEAM = FKGEE875K4;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
 				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -884,7 +886,7 @@
 				CODE_SIGN_ENTITLEMENTS = Luma.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = CUP3S7NYZW;
+				DEVELOPMENT_TEAM = FKGEE875K4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Luma/Parse",

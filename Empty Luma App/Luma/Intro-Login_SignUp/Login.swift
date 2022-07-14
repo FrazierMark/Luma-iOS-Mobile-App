@@ -31,6 +31,11 @@ import var CommonCrypto.CC_MD5_DIGEST_LENGTH
 import func CommonCrypto.CC_MD5
 import typealias CommonCrypto.CC_LONG
 
+//Adobe AEP SDKs
+import AEPEdge
+import AEPCore
+import AEPEdgeIdentity
+
 class Login: UIViewController, UITextFieldDelegate {
     
     /*--- VIEWS ---*/
@@ -82,7 +87,39 @@ class Login: UIViewController, UITextFieldDelegate {
         self.hideHUD()
         self.dismiss(animated: true, completion: nil)
         self.emailTxt = "testUser@gmail.com"
+        
+        
+        let emailAddress = "testUser@gmail.com"
+        let crmId = "112ca06ed53d3db37e4cea49cc45b71e"
+        
+        // Adobe Experience Platform - Set Identity
+        let identityMap: IdentityMap = IdentityMap()
+        // Add an item
+        let emailIdentity = IdentityItem(id: emailAddress, authenticatedState: AuthenticatedState.authenticated)
+        let crmIdentity = IdentityItem(id: crmId, authenticatedState: AuthenticatedState.authenticated)
+        identityMap.add(item:emailIdentity, withNamespace: "Email")
+        identityMap.add(item: crmIdentity, withNamespace: "lumaCrmId")
+        Identity.updateIdentities(with: identityMap)
+
+
+        // Adobe Experience Platform - Send XDM Event
+        let actionName = "Login"
+        var xdmData: [String: Any] = [:]
+        //Page View
+        xdmData["_techmarketingdemos"] = [
+            "appInformation": [
+                "appInteraction": [
+                    "name": actionName,
+                    "appAction": [
+                        "value": 1
+                    ]
+                ]
+            ]
+        ]
+        let experienceEvent = ExperienceEvent(xdm: xdmData)
+        Edge.sendEvent(experienceEvent: experienceEvent)
     }
+    
     
     
     

@@ -14,6 +14,13 @@ import UserNotifications
 import Alamofire
 import SwiftyJSON
 
+//Adobe AEP SDKs
+import AEPEdge
+import AEPCore
+import AEPEdgeIdentity
+import AEPUserProfile
+
+
 class Account: UIViewController {
     
     /*--- VIEWS ---*/
@@ -93,7 +100,11 @@ class Account: UIViewController {
         self.genderLabel.text = "F"
         self.shippingAddressLabel.text = "123 N Main St., Portland OR, 97213"
         self.loyaltyLevelLabel.text = loyaltyLevel
-
+        
+        // Adobe Experience Platform - Update User Profile
+        var profileMap = [String: Any]()
+        profileMap["loyaltyLevel"] = loyaltyLevel
+        UserProfile.updateUserAttributes(attributeDict: profileMap)
     }
 
 
@@ -140,6 +151,34 @@ class Account: UIViewController {
         // Logout
         let logout = UIAlertAction(title: "Logout", style: .destructive, handler: { (action) -> Void in
             isLoggedIn = false;
+            
+            // Adobe Experience Platform - Send XDM Event
+            let actionName = "Logout"
+            var xdmData: [String: Any] = [:]
+            //Page View
+            xdmData["_techmarketingdemos"] = [
+                "appInformation": [
+                    "appInteraction": [
+                        "name": actionName,
+                        "appAction": [
+                            "value": 1
+                        ]
+                    ]
+                ]
+            ]
+            let experienceEvent = ExperienceEvent(xdm: xdmData)
+            Edge.sendEvent(experienceEvent: experienceEvent)
+            
+            // Adobe Experience Platform - Remove Identity
+            /*
+             Remove the identity from the stored client-side IdentityMap. The Identity extension will stop sending the identifier to the Edge Network. Using this API does not remove the identifier from the server-side User Profile Graph or Identity Graph.
+             */
+            
+            let emailAddress = "testuser@gmail.com"
+            let crmId = "112ca06ed53d3db37e4cea49cc45b71e"
+            // Adobe Experience Platform - Remove Identity
+            Identity.removeIdentity(item: IdentityItem(id: emailAddress), withNamespace: "Email")
+            Identity.removeIdentity(item: IdentityItem(id: crmId), withNamespace: "lumaCrmId")
         })
         
         let editPreferences = UIAlertAction(title: "Edit Channel Preferences", style: .default, handler: { (action) -> Void in

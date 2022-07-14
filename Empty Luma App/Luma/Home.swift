@@ -15,6 +15,14 @@ import UserNotifications
 import Alamofire
 import SwiftyJSON
 
+//Adobe AEP SDKs
+import AEPUserProfile
+import AEPAssurance
+import AEPEdge
+import AEPCore
+import AEPEdgeIdentity
+import AEPEdgeConsent
+
 
 class Home: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CLLocationManagerDelegate
 {
@@ -50,6 +58,46 @@ class Home: UIViewController, UITableViewDelegate, UITableViewDataSource, UIText
     override func viewDidLoad() {
             super.viewDidLoad()
         
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestAlwaysAuthorization()
+
+
+        // Adobe Experience Platform - Consent - Get
+        Consent.getConsents{ consents, error in
+            guard error == nil, let consents = consents else { return }
+            guard let jsonData = try? JSONSerialization.data(withJSONObject: consents, options: .prettyPrinted) else { return }
+            guard let jsonStr = String(data: jsonData, encoding: .utf8) else { return }
+            print("Consent getConsents: ",jsonStr)
+        }
+        let defaults = UserDefaults.standard
+        let consentKey = "askForConsentYet"
+        let hidePopUp = defaults.bool(forKey: consentKey)
+        
+        // Adobe Experience Platform - Consent - Update
+        //Check if user has been asked for consent
+        if(hidePopUp == false){
+            //Consent Alert
+            let alert = UIAlertController(title: "Allow Data Collection?", message: "Selecting Yes will begin data collection", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { action in
+                //Update Consent -> "yes"
+                let collectConsent = ["collect": ["val": "y"]]
+                let currentConsents = ["consents": collectConsent]
+                Consent.update(with: currentConsents)
+                defaults.set(true, forKey: consentKey)
+            }))
+            alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: { action in
+                //Update Consent -> "no"
+                let collectConsent = ["collect": ["val": "n"]]
+                let currentConsents = ["consents": collectConsent]
+                Consent.update(with: currentConsents)
+                defaults.set(true, forKey: consentKey)
+            }))
+            self.present(alert, animated: true)
+        }
+        
+        
+       
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.requestAlwaysAuthorization()

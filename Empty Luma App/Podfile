@@ -4,4 +4,20 @@ target 'Luma' do
   use_frameworks!
   pod 'Alamofire'
   pod 'SwiftyJSON'
+  pod 'AEPEdge', '~> 1.0'
+  pod 'AEPEdgeConsent', '~> 1.0'
+  pod 'AEPAssurance', '~> 3.0'
+  pod 'AEPEdgeIdentity', '~> 1.0'
+  pod 'AEPUserProfile', '~> 3.0'
+  pod 'AEPCore', '~> 3.0'
+  pod 'AEPIdentity', '~> 3.0'
+  pod 'AEPSignal', '~>3.0'
+  pod 'AEPLifecycle', '~>3.0'
+  pod 'AEPMessaging', '~>1'
+end
+
+post_install do |installer|
+  installer.pods_project.build_configurations.each do |config|
+    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
+  end
 end

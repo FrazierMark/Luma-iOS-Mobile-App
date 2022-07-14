@@ -176,10 +176,34 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPAssurance/AEPAssurance.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPCore/AEPCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPEdge/AEPEdge.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPEdgeConsent/AEPEdgeConsent.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPEdgeIdentity/AEPEdgeIdentity.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPIdentity/AEPIdentity.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPLifecycle/AEPLifecycle.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPMessaging/AEPMessaging.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPRulesEngine/AEPRulesEngine.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPServices/AEPServices.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPSignal/AEPSignal.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPUserProfile/AEPUserProfile.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPAssurance/AEPAssurance.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPCore/AEPCore.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPEdge/AEPEdge.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPEdgeConsent/AEPEdgeConsent.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPEdgeIdentity/AEPEdgeIdentity.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPIdentity/AEPIdentity.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPLifecycle/AEPLifecycle.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPMessaging/AEPMessaging.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPRulesEngine/AEPRulesEngine.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPServices/AEPServices.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPSignal/AEPSignal.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/AEPUserProfile/AEPUserProfile.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
 fi

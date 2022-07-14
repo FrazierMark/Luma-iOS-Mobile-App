@@ -11,6 +11,12 @@ import UIKit
 import Parse
 import UserNotifications
 
+import AEPAssurance
+import AEPEdge
+import AEPCore
+import AEPUserProfile
+
+
 class Cart: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
 
@@ -279,36 +285,92 @@ class Cart: UIViewController, UITableViewDelegate, UITableViewDataSource
             present(alert, animated: true, completion: nil)
     }
 
-    
     // ------------------------------------------------
-    // PROCESS ORDER
-    // ------------------------------------------------
-    func processOrder() {
-        // Show Order Complete View
-        self.orderCompleteView.frame.origin.y = 0
-        
-        showHUD()
-        var orderTotal = 0.00
-        // Loop to create Orders
-        for i in 0..<self.cartArray.count {
-            let currentProduct = self.cartArray[i]
-            let price = currentProduct["finalPrice"] as! Double
-            let sku = currentProduct["objectId"]
-            let units = 1.00
-            let category = currentProduct["category"]
-            let subCategory = currentProduct["subCategory"]
-            orderTotal += (price*units)
-            
-        }
-        
-        var currency = "USD"
-        
-        
-        hideHUD()
-        self.simpleAlert("Order Placed!")
-        
-    }
-    
+     // PROCESS ORDER
+     // ------------------------------------------------
+     func processOrder() {
+         // Show Order Complete View
+         self.orderCompleteView.frame.origin.y = 0
+         
+         showHUD()
+         var orderTotal = 0.00
+         let orderId = Int.random(in: 1..<10000)
+         let paymentType = self.proofOfPayment
+         // Loop to create Orders
+         for i in 0..<self.cartArray.count {
+             let currentProduct = self.cartArray[i]
+             let price = currentProduct["finalPrice"] as! Double
+             let sku = currentProduct["objectId"] as! String
+             let units = 1.00
+             let name = currentProduct["name"] as! String
+             orderTotal += (price*units)
+             
+             //XDM - Construct productListItems
+             let currentItem = [
+                 "name": name,
+                 "sku": sku,
+                 "priceTotal": price,
+                 "quantity": 1
+             ] as [String: Any]
+             self.productListItems.append(currentItem)
+         }
+
+         
+         // Adobe Experience Platform - Send XDM Event
+         //Prep Data
+         let stateName = "luma: content: ios: us: en: orderconfirmation"
+         //Commerce
+         var xdmData: [String: Any] = [
+           "eventType": "commerce.purchases",
+           "commerce": [
+             "purchases": [
+               "value": 1
+             ],
+             "order": [
+                 "currencyCode": CURRENCY_CODE,
+                 "priceTotal": orderTotal,
+                 "purchaseID": orderId,
+                 "purchaseOrderNumber": orderId,
+                 "payments": [ //Assuming only 1 payment type is used
+                     [
+                         "currencyCode": CURRENCY_CODE,
+                         "paymentAmount": orderTotal,
+                         "paymentType": paymentType,
+                         "transactionID": orderId
+                     ]
+                 ]
+             ]
+           ],
+             "productListItems": self.productListItems //constructed above
+         ]
+
+         //Page View
+         xdmData["_techmarketingdemos"] = [
+             "appInformation": [
+                 "appStateDetails": [
+                     "screenType": "App",
+                     "screenName": stateName,
+                     "screenView": [
+                         "value": 1
+                     ]
+                 ]
+             ]
+         ]
+         let experienceEvent = ExperienceEvent(xdm: xdmData)
+         Edge.sendEvent(experienceEvent: experienceEvent)
+         
+         
+         // Adobe Experience Platform - Update Profile
+         var profileMap = [String: Any]()
+         profileMap["isPaidUser"] = "yes"
+         UserProfile.updateUserAttributes(attributeDict: profileMap)
+         
+         hideHUD()
+         self.simpleAlert("Order Placed!")
+         
+     }
+     
+     
     
     
     // ------------------------------------------------
