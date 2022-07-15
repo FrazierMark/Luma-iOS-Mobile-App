@@ -1,12 +1,3 @@
-//
-//  AppDelegate.swift
-//  Luma iOS Mobile Application
-//
-//  Developed by XScoder, https://xscoder.com
-//  Enhanced by Adobe Inc. to support Adobe Experience Cloud and Adobe Experience Platform
-//  All Rights reserved - 2022
-//
-
 
 
 import UIKit
@@ -36,9 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
 
     let notificationCenter = UNUserNotificationCenter.current()
+    private let ENVIRONMENT_FILE_ID = "3149c49c3910/301aa57f50b5/launch-387236dc11bc-development"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
+
         notificationCenter.delegate = self
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         notificationCenter.requestAuthorization(options: options) {
@@ -47,11 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         print("User has declined notifications")
                     }
                 }
+
         MobileCore.setLogLevel(.debug)
-        // let currentAppId = "94f571f308d5/ebdd79919382/launch-1c2658732b82-development"
-        let appState = application.applicationState
+        // let currentAppId = "3149c49c3910/301aa57f50b5/launch-387236dc11bc-development"
+        let appState = application.applicationState;
         loadProducts()
-        
+
         let extensions = [
                           Edge.self,
                           Consent.self,
@@ -63,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                           Signal.self,
                           Messaging.self
                         ]
-        
+
         // MobileCore.setLogLevel(.trace)
         MobileCore.registerExtensions(extensions, {
             MobileCore.configureWith(appId: "3149c49c3910/301aa57f50b5/launch-387236dc11bc-development")
@@ -72,7 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 MobileCore.lifecycleStart(additionalContextData: ["contextDataKey": "contextDataVal"])
             }
         })
-        
+
         let center = UNUserNotificationCenter.current()
                 center.requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
 
@@ -84,19 +77,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                         application.registerForRemoteNotifications()
                     }
                 }
+        // register push notification
+        registerForPushNotifications(application: application) {
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1) {
+                // AdIdUtils.requestTrackingAuthorization()
+            }
+        }
+
+
         return true
     }
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
+    func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         Assurance.startSession(url: url)
+        print("TEST TEST")
         return true
     }
-    
-    
-//    func application(_: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-//        MobileCore.setPushIdentifier(deviceToken)
-//    }
-    
+
+
     // Tells the delegate that the app successfully registered with Apple Push Notification service (APNs).
         func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
             let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
@@ -106,8 +104,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             // Send push token to experience platform
             MobileCore.setPushIdentifier(deviceToken)
         }
+
     
-    
+    func registerForPushNotifications(application: UIApplication, completionHandler: @escaping ()->() = {}) {
+        let center = UNUserNotificationCenter.current()
+
+        //Ask for user permission
+        center.requestAuthorization(options: [.badge, .sound, .alert]) { [weak self] granted, _ in
+            defer { completionHandler() }
+            guard granted else { return }
+
+            center.delegate = self
+
+            DispatchQueue.main.async {
+                application.registerForRemoteNotifications()
+            }
+        }
+    }
+
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
@@ -126,7 +140,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
+
+
+    // Tells the delegate that the app failed to register with Apple Push Notification service (APNs).
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register for remote notifications: \(error)")
+        MobileCore.setPushIdentifier(nil)
+    }
+
+    // MARK: - Handle Push Notification Interactions
+    // Receiving Notifications
+    // Delegate method to handle a notification that arrived while the app was running in the foreground.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .sound, .badge])
+    }
+
+    // Handling the Selection of Custom Actions
+    // Delegate method to process the user's response to a delivered notification.
+    func userNotificationCenter(_: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        // Perform the task associated with the action.
+        switch response.actionIdentifier {
+        case "ACCEPT_ACTION":
+            Messaging.handleNotificationResponse(response, applicationOpened: true, customActionId: "ACCEPT_ACTION")
+
+        case "DECLINE_ACTION":
+            Messaging.handleNotificationResponse(response, applicationOpened: false, customActionId: "DECLINE_ACTION")
+
+            // Handle other actions…
+        default:
+            Messaging.handleNotificationResponse(response, applicationOpened: true, customActionId: nil)
+        }
+
+        // Always call the completion handler when done.
+        completionHandler()
+    }
+
     func loadProducts() {
         //Perviously used remote backend, made local
         let configuration = ParseClientConfiguration {
@@ -144,22 +196,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
 extension AppDelegate {
 
     func showAlertDialog(title: String!, message: String!, positive: String?, negative: String?) {
-        
+
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
+
         if (positive != nil) {
-            
+
             alert.addAction(UIAlertAction(title: positive, style: .default, handler: nil))
         }
-        
+
         if (negative != nil) {
-            
+
             alert.addAction(UIAlertAction(title: negative, style: .default, handler: nil))
         }
-        
+
         self.window?.rootViewController!.present(alert, animated: true, completion: nil)
-        
+
     }
-    
-    
+
+
 }
+
