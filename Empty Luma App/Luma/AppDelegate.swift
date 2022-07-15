@@ -1,5 +1,3 @@
-
-
 import UIKit
 import Parse
 import CoreLocation
@@ -25,23 +23,13 @@ import AEPMessaging
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
-    let notificationCenter = UNUserNotificationCenter.current()
-    private let ENVIRONMENT_FILE_ID = "3149c49c3910/301aa57f50b5/launch-387236dc11bc-development"
+    
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-        notificationCenter.delegate = self
-        let options: UNAuthorizationOptions = [.alert, .sound, .badge]
-        notificationCenter.requestAuthorization(options: options) {
-                    didAllow, _ in
-                    if !didAllow {
-                        print("User has declined notifications")
-                    }
-                }
-
         MobileCore.setLogLevel(.debug)
-        // let currentAppId = "3149c49c3910/301aa57f50b5/launch-387236dc11bc-development"
+        
         let appState = application.applicationState;
         loadProducts()
 
@@ -65,61 +53,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 MobileCore.lifecycleStart(additionalContextData: ["contextDataKey": "contextDataVal"])
             }
         })
-
-        let center = UNUserNotificationCenter.current()
-                center.requestAuthorization(options: [.alert, .sound, .badge]) { _, error in
-
-                    if let error = error {
-                        print("error requesting authorization: \(error)")
-                    }
-
-                    DispatchQueue.main.async {
-                        application.registerForRemoteNotifications()
-                    }
-                }
-        // register push notification
+        
+        
+        // register push notification registration process with Apple Push Notification service
         registerForPushNotifications(application: application) {
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1) {
-                // AdIdUtils.requestTrackingAuthorization()
             }
         }
-
 
         return true
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey: Any] = [:]) -> Bool {
         Assurance.startSession(url: url)
-        print("TEST TEST")
         return true
-    }
-
-
-    // Tells the delegate that the app successfully registered with Apple Push Notification service (APNs).
-        func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-            let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-            let token = tokenParts.joined()
-            print("Device Token: \(token)")
-
-            // Send push token to experience platform
-            MobileCore.setPushIdentifier(deviceToken)
-        }
-
-    
-    func registerForPushNotifications(application: UIApplication, completionHandler: @escaping ()->() = {}) {
-        let center = UNUserNotificationCenter.current()
-
-        //Ask for user permission
-        center.requestAuthorization(options: [.badge, .sound, .alert]) { [weak self] granted, _ in
-            defer { completionHandler() }
-            guard granted else { return }
-
-            center.delegate = self
-
-            DispatchQueue.main.async {
-                application.registerForRemoteNotifications()
-            }
-        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -140,7 +87,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    // Register push notification registration process with Apple Push Notification service
+    func registerForPushNotifications(application: UIApplication, completionHandler: @escaping ()->() = {}) {
+        let center = UNUserNotificationCenter.current()
 
+        //Ask for user permission
+        center.requestAuthorization(options: [.badge, .sound, .alert]) { [weak self] granted, _ in
+            defer { completionHandler() }
+            guard granted else { return }
+
+            center.delegate = self
+
+            DispatchQueue.main.async {
+                application.registerForRemoteNotifications()
+            }
+        }
+    }
+    
+    // Tells the delegate that the app successfully registered with Apple Push Notification service (APNs).
+    // deviceToken is received from Apple Push Notification service
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+        let token = tokenParts.joined()
+        print("Device Token: \(token)")
+
+        // Send push token to experience platform
+        MobileCore.setPushIdentifier(deviceToken)
+    }
 
     // Tells the delegate that the app failed to register with Apple Push Notification service (APNs).
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
